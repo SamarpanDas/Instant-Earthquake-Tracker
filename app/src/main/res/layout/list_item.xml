@@ -16,7 +16,7 @@
         android:layout_weight="0"
         android:text="9.2"
         android:textColor="#090909"
-        android:textSize="17sp" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/locationTextView"
@@ -27,7 +27,7 @@
         android:password="false"
         android:text="San Francisco"
         android:textColor="#090909"
-        android:textSize="17sp" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/dateTextView"
@@ -35,7 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="left"
+        android:paddingRight="2dp"
         android:text="Feb 2, 2020"
         android:textColor="#090909"
-        android:textSize="17sp" />
+        android:textSize="16sp" />
 </LinearLayout>
