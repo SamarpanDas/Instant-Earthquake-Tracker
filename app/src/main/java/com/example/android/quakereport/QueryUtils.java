@@ -5,7 +5,9 @@ import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public final class QueryUtils
 {
@@ -57,9 +59,13 @@ public final class QueryUtils
                 JSONObject properties = c.getJSONObject("properties");
                 String mag = properties.getString("mag");
                 String place = properties.getString("place");
-                String time = properties.getString("time");
+                long time = Long.parseLong(properties.getString("time"));
+                Date dateObject = new Date(time);
 
-                earthquakes.add(new Input(mag, place, time));
+                SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM DD, yyyy");
+                String dateToDisplay = dateFormatter.format(dateObject);
+
+                earthquakes.add(new Input(mag, place, dateToDisplay));
 
 
             }

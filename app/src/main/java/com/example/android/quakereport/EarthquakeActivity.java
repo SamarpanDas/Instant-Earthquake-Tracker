@@ -53,6 +53,6 @@ public class EarthquakeActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.listView);
 
         listView.setAdapter(inputAdapter);
-        int jjo;
+
     }
 }
