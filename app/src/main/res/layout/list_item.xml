@@ -11,7 +11,7 @@
 
     <TextView
         android:id="@+id/magnitudeTextView"
-        android:layout_width="95dp"
+        android:layout_width="78dp"
         android:layout_height="wrap_content"
         android:layout_weight="0"
         android:text="9.2"
@@ -20,9 +20,11 @@
 
     <TextView
         android:id="@+id/locationTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:paddingBottom="1dp"
+        android:password="false"
         android:text="San Francisco"
         android:textColor="#090909"
         android:textSize="17sp" />
@@ -31,7 +33,7 @@
         android:id="@+id/dateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight=".2"
+        android:layout_weight="1"
         android:gravity="left"
         android:text="Feb 2, 2020"
         android:textColor="#090909"
