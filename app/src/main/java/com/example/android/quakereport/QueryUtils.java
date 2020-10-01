@@ -59,13 +59,17 @@ public final class QueryUtils
                 JSONObject properties = c.getJSONObject("properties");
                 String mag = properties.getString("mag");
                 String place = properties.getString("place");
-                long time = Long.parseLong(properties.getString("time"));
+                //long time = Long.parseLong(properties.getString("time"));
+                long time = properties.getLong("time");
                 Date dateObject = new Date(time);
 
-                SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM DD, yyyy");
+                SimpleDateFormat dateFormatter = new SimpleDateFormat("LLL dd, yyyy");
                 String dateToDisplay = dateFormatter.format(dateObject);
 
-                earthquakes.add(new Input(mag, place, dateToDisplay));
+                SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
+                String timeToDisplay = timeFormat.format(dateObject);
+
+                earthquakes.add(new Input(mag, place, dateToDisplay, timeToDisplay));
 
 
             }

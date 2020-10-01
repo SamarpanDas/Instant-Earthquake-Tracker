@@ -35,6 +35,9 @@ public class InputAdapter extends ArrayAdapter<Input> {
         TextView dateTextView = (TextView) listItemView.findViewById(R.id.dateTextView);
         dateTextView.setText(currentInput.getDate());
 
+        TextView timeTextView = (TextView) listItemView.findViewById(R.id.timeTextView);
+        timeTextView.setText(currentInput.getTime());
+
         return listItemView;
     }
 }
