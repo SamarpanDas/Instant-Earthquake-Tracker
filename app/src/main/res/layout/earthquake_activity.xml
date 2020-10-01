@@ -18,4 +18,6 @@
     android:id="@+id/listView"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="match_parent"
+    android:background="#151414"
+    android:dividerHeight="0.05dp"/>
