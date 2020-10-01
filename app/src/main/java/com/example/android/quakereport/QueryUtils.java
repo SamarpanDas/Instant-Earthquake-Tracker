@@ -5,6 +5,7 @@ import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -57,11 +58,16 @@ public final class QueryUtils
             for(int i = 0; i < features.length(); i++){
                 JSONObject c = features.getJSONObject(i);
                 JSONObject properties = c.getJSONObject("properties");
-                String mag = properties.getString("mag");
+
+
+                double magActual = properties.getDouble("mag");  // magnitude formatting
+                DecimalFormat formatter = new DecimalFormat("0.0");
+                String mag = formatter.format(magActual);
+
+
+        /////////////  start of part of location string manipulation
+
                 String actual = properties.getString("place");
-
-
-                ///  start of part of location string manipulation
 
                 String[] parts = actual.split(" ");
                 String primary = "";String secondary = "";int ok = 0;
@@ -80,9 +86,9 @@ public final class QueryUtils
                         }else{secondary = secondary+ parts[ii] + " ";}
                     }}else{primary = "Near the";secondary = actual;}
 
-                ///  end of part of location string manipulation
+        ///////////  end of part of location string manipulation
 
-                //long time = Long.parseLong(properties.getString("time"));
+
                 long time = properties.getLong("time");
                 Date dateObject = new Date(time);
 
@@ -94,8 +100,6 @@ public final class QueryUtils
 
                 earthquakes.add(new Input(mag, primary, secondary, dateToDisplay, timeToDisplay));
                 primary="";secondary="";ok=0;done=0;
-
-
             }
 
         } catch (Exception e) {
