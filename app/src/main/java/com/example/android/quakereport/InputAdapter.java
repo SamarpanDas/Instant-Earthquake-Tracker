@@ -32,6 +32,9 @@ public class InputAdapter extends ArrayAdapter<Input> {
         TextView locationTextView = (TextView) listItemView.findViewById(R.id.locationTextView);
         locationTextView.setText(currentInput.getLocationName());
 
+        TextView locationMainTextView = (TextView) listItemView.findViewById(R.id.locationMainTextView);
+        locationMainTextView.setText(currentInput.getLocationMainName());
+
         TextView dateTextView = (TextView) listItemView.findViewById(R.id.dateTextView);
         dateTextView.setText(currentInput.getDate());
 

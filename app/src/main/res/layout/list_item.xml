@@ -28,6 +28,16 @@
         android:textSize="16sp" />
 
     <TextView
+        android:id="@+id/locationMainTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingRight="2dp"
+        android:text="San Francisco"
+        android:textColor="#090909"
+        android:textSize="16sp" />
+
+    <TextView
         android:id="@+id/dateTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

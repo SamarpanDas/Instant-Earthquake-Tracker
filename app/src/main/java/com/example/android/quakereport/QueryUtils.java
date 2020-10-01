@@ -58,7 +58,30 @@ public final class QueryUtils
                 JSONObject c = features.getJSONObject(i);
                 JSONObject properties = c.getJSONObject("properties");
                 String mag = properties.getString("mag");
-                String place = properties.getString("place");
+                String actual = properties.getString("place");
+
+
+                ///  start of part of location string manipulation
+
+                String[] parts = actual.split(" ");
+                String primary = "";String secondary = "";int ok = 0;
+
+                for(int ii=0;ii<parts.length;ii++){
+                    if(parts[ii].equalsIgnoreCase("of")){
+                        ok=1;break;}}
+
+                int done = 0;
+                if(ok == 1) {
+                    for(int ii=0;ii<parts.length;ii++){
+                        if(done == 0){
+                            primary = primary + parts[ii] + " ";
+                            if(parts[ii].equalsIgnoreCase("of"))
+                            {done = 1;}
+                        }else{secondary = secondary+ parts[ii] + " ";}
+                    }}else{primary = "Near the";secondary = actual;}
+
+                ///  end of part of location string manipulation
+
                 //long time = Long.parseLong(properties.getString("time"));
                 long time = properties.getLong("time");
                 Date dateObject = new Date(time);
@@ -69,7 +92,8 @@ public final class QueryUtils
                 SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
                 String timeToDisplay = timeFormat.format(dateObject);
 
-                earthquakes.add(new Input(mag, place, dateToDisplay, timeToDisplay));
+                earthquakes.add(new Input(mag, primary, secondary, dateToDisplay, timeToDisplay));
+                primary="";secondary="";ok=0;done=0;
 
 
             }
