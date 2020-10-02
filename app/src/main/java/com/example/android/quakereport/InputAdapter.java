@@ -29,10 +29,6 @@ public class InputAdapter extends ArrayAdapter<Input>
 
         Input currentInput = getItem(position);
 
-
-
-
-
         TextView magnitudeTextView = (TextView) listItemView.findViewById(R.id.magnitudeTextView);
         magnitudeTextView.setText(currentInput.getMagnitude());
 

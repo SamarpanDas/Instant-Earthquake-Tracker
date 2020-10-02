@@ -15,8 +15,13 @@
  */
 package com.example.android.quakereport;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -25,25 +30,16 @@ public class EarthquakeActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = EarthquakeActivity.class.getName();
 
+    public void getUrl(ArrayList<String> urls)
+    {
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.earthquake_activity);
 
-        // Create a fake list of earthquake locations.
-        /*
-        ArrayList<Input> earthquakes = new ArrayList<>();
-
-        earthquakes.add(new Input(9.2,"Delhi", "Febuar 2, 2020"));
-        earthquakes.add(new Input(9.3,"Mumbai", "Feb 2, 2020"));
-        earthquakes.add(new Input(9.1,"kolkata", "Feb 2, 2020"));
-        earthquakes.add(new Input(9.2,"Delhi", "Feb 2, 2020"));
-        earthquakes.add(new Input(9.3,"Mumbai", "Feb 2, 2020"));
-        earthquakes.add(new Input(9.1,"kolkata", "Feb 2, 2020"));
-        earthquakes.add(new Input(9.2,"Delhi", "Feb 2, 2020"));
-        earthquakes.add(new Input(9.3,"Mumbai", "Feb 2, 2020"));
-        earthquakes.add(new Input(9.1,"kolkata", "Feb 2, 2020"));
-        */
         ArrayList<Input> earthquakes = QueryUtils.extractEarthquakes();
 
 
@@ -51,8 +47,23 @@ public class EarthquakeActivity extends AppCompatActivity {
         InputAdapter inputAdapter = new InputAdapter(this, earthquakes);
 
         ListView listView = (ListView) findViewById(R.id.listView);
-
         listView.setAdapter(inputAdapter);
+
+        final ArrayList<String> urls = QueryUtils.urls;
+
+        final String[] url = {""};
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.i("URL..........", urls.get(i));
+                 url[0] = urls.get(i);
+
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url[0]));
+                if (!url[0].startsWith("http://") && !url[0].startsWith("https://"))
+                    url[0] = "http://" + url[0];
+                startActivity(browserIntent);
+            }
+        });
 
     }
 }
