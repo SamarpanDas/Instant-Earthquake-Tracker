@@ -105,11 +105,6 @@ public final class QueryUtils
 
                 earthquakes.add(new Input(mag, primary, secondary, dateToDisplay, timeToDisplay));
                 primary="";secondary="";ok=0;done=0;
-
-
-
-
-
             }
 
         } catch (Exception e) {
